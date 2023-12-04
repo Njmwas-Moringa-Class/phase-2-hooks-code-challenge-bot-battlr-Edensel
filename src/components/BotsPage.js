@@ -63,6 +63,22 @@ function BotsPage() {
       console.error("Error deleting bot:", error);
     }
   }
+
+  // Render YourBotArmy and BotCollection components
+  return (
+    <div>
+      <YourBotArmy
+        bots={yourBotArmy}
+        removeBot={removeBot}
+        deleteBot={deleteBot}
+      />
+      <BotCollection
+        bots={bots}
+        enlistBot={enlistBot}
+        deleteBot={deleteBot}
+      />
+    </div>
+  );
 }
 
 export default BotsPage;
