@@ -34,6 +34,35 @@ function BotsPage() {
       setYourBotArmy((prevArmy) => [...prevArmy, bot]);
     }
   }
+
+  // Remove a bot from the army
+  function removeBot(bot) {
+    setYourBotArmy((prevArmy) =>
+      prevArmy.filter((b) => b.id !== bot.id)
+    );
+    setBots((prevBots) =>
+      prevBots.map((b) =>
+        b.id === bot.id ? { ...b, army: false } : { ...b }
+      )
+    );
+  }
+
+  // Delete a bot both from the server and army
+  async function deleteBot(bot) {
+    try {
+      await fetch(`http://localhost:8002/bots/${bot.id}`, {
+        method: "DELETE",
+      });
+      setYourBotArmy((prevArmy) =>
+        prevArmy.filter((b) => b.id !== bot.id)
+      );
+      setBots((prevBots) =>
+        prevBots.filter((b) => b.id !== bot.id)
+      );
+    } catch (error) {
+      console.error("Error deleting bot:", error);
+    }
+  }
 }
 
 export default BotsPage;
