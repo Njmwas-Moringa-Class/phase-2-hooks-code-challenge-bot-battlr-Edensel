@@ -11,6 +11,17 @@ function YourBotArmy({ bots, removeBot, deleteBot }) {
       deleteBot={deleteBot}
     />
   ));
-   
+
+  // Display a segmented inverted olive bot-army
+  return (
+    <div className="ui segment inverted olive bot-army">
+      <div className="ui five column grid">
+        <div className="row bot-army-row">
+          {renderArmy}
+        </div>
+      </div>
+    </div>
+  );
+
 }
 export default YourBotArmy;
