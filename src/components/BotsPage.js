@@ -12,6 +12,28 @@ function BotsPage() {
     fetchData();
   }, []);
 
+  // Function to fetch bot data from the server
+  async function fetchData() {
+    try {
+      const response = await fetch("http://localhost:8002/bots");
+      const data = await response.json();
+      setBots(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  // Enlist a bot into the army
+  function enlistBot(bot) {
+    if (!bot.army) {
+      setBots((prevBots) => [
+        ...prevBots.map((b) =>
+          b.id === bot.id ? { ...b, army: true } : { ...b }
+        ),
+      ]);
+      setYourBotArmy((prevArmy) => [...prevArmy, bot]);
+    }
+  }
 }
 
 export default BotsPage;
