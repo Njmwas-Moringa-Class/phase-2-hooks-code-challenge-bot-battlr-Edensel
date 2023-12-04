@@ -11,11 +11,15 @@ function BotCollection({ bots, enlistBot, deleteBot }) {
       deleteBot={deleteBot}
     />
   ));
+
   // Display a grid of BotCards
   return (
     <div className="ui four column grid">
-      <div className="row">{renderBots}</div>
+      <div className="row">
+        {renderBots}
+      </div>
     </div>
   );
 }
+
 export default BotCollection;

@@ -22,6 +22,6 @@ function YourBotArmy({ bots, removeBot, deleteBot }) {
       </div>
     </div>
   );
-
 }
+
 export default YourBotArmy;
